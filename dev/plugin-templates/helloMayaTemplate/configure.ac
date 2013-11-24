@@ -1,4 +1,4 @@
-AC_INIT([helloMaya], [0.1.1], [kari.brown@spellboundfx.com])
+AC_INIT([helloMaya], [0.1.1], [bug-report@email])
 AC_DEFINE([PLUGIN_VENDOR], ["Kari Brown"], [Plugin vendor name])
 
 AC_PREREQ([2.69])
