@@ -1,0 +1,84 @@
+//////////////////////////////////////////////////////////////////////////////
+//
+// This file is part of helloMayaTemplate.
+// 
+// 	Copyright 2013 Kari Brown
+// 
+//  helloMayaTemplate is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU Lesser General Public License as published
+//  by the Free Software Foundation, either version 3 of the License, or (at
+//  your option) any later version.
+//
+//  helloMayaTemplate is distributed in the hope that it will be useful, but
+//  WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+//  or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public
+//  License for more details.
+//
+//  You should have received a copy of the GNU Lesser General Public License
+//  along with helloMayaTemplate.
+//  If not, see <http://www.gnu.org/licenses/>.
+//
+//////////////////////////////////////////////////////////////////////////////
+
+
+helloMayaTemplate - A GNU style Maya plugin template
+
+	helloMayaTemplate is a GNU style example Maya plugin project. It allows
+	the maintainer to use the GNU build system to configure and deploy a Maya
+	plugin project. It also allows the end user to use the well known
+	combination of commands "./configure", "make" and "make install" to use
+	the plugin. It is still in its very early stages and many things might not
+	work properly yet. I encourage you to give it a go and report back your
+	experiences wheter successfull or not. You are more than welcome to
+	contribute your ideas and changes to this project. See Bug reporting
+	secton for contact details.
+
+
+Quick start - How to use this template for your own project
+
+	1. Copy and rename the the entire template folder to your dev folder e.g.
+	   "cp -R helloMayaTemplate ~/dev/helloMaya"
+	2. Edit the first two lines of configure.ac with the information of your
+	   package details.
+	3. Edit the source files under ./src folder.
+	4. Edit the ./src/Makefile.am to reflect your changes.
+	5. Edit the README, NEWS, AUTHORS, COPYING, COPYING.LESSER and ChangeLog
+	   files to your liking.
+	6. In the project root folder run "autoreconf -i -f".
+	7. Run "./configure"
+	8. Run "make"
+	9. Run "sudo make install"
+	10. To create a tar ball for distributing your plugin run "make distcheck"
+
+
+Documentation
+
+	At the time of writing this the current version of Maya is 2014 which
+	requires gcc/g++ version 4.1.2 for ABI compatibility. See your system
+	documentation and/or the Maya API Guide for information on how to obtain a
+	copy. The configure.ac file has been written with this in mind. It looks
+	for g++412 gcc412 commands for compiling the project which should be in
+	your search path. On my system I have compiled gcc412 from sources and
+	installed it to /opt/gcc412 then created g++412 and gcc412
+	symlinks in /usr/bin.
+
+	You should have an environment variable called MAYA_LOCATION pointing
+	to the root folder of your Maya installation e.g.
+	/usr/autodesk/maya2014-x64/
+
+	You should also have an environment variable called MAYA_PLUG_IN_PATH
+	pointing to the folder where Maya can find your plugin.so file. "make
+	install" makes use of this folder too.
+
+	Please see the Maya API Guide at http://www.autodesk.com for general
+	information about setting up your build environment.
+
+	Please see http://en.wikipedia.org/wiki/GNU_build_system and
+	http://airs.com/ian/configure/ for more information on the GNU build
+	system.
+
+	Please see http://www.spellboundfx.com for more information.
+
+Bug reporting
+
+	Please report bugs or feature requests to kari.brown@spellboundfx.com
