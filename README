@@ -40,8 +40,8 @@ Tool list
 
 	helloMayaTemplate - ./dev/plugin-templates/helloMayaTemplate
 
-	The purpose of helloMayaTemplate is to create a GNU style project template
-	for developing and distributing Maya plugins.
+	The purpose of helloMayaTemplate is to create a GNU style project
+	template for developing and distributing Maya plugins.
 
 
 Bug reporting
