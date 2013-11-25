@@ -1,7 +1,7 @@
 AC_INIT([helloMaya], [0.1.1], [bug-report@email])
 AC_DEFINE([PLUGIN_VENDOR], ["Your Name"], [Plugin vendor name])
 
-AC_PREREQ([2.69])
+AC_PREREQ([2.63])
 AC_CONFIG_SRCDIR([src/helloMaya.cpp])
 AM_INIT_AUTOMAKE([-Wall -Werror])
 
