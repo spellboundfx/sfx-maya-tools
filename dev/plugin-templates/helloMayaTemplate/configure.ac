@@ -6,20 +6,16 @@ AC_CONFIG_SRCDIR([src/helloMaya.cpp])
 AM_INIT_AUTOMAKE([-Wall -Werror])
 
 if test ["$CXX" = ""] || test ["$CXX" = "g++"]; then
-	echo "Checking for g++ version"
 	AC_CHECK_PROGS(GXX, "g++", "")
 	if test ["$GXX" = "g++"]; then
 		GCC_VERSION=`$GXX -dumpversion`
 		echo "g++ is version $GCC_VERSION"
 	fi
 else
-	echo "Checking $CXX"
 	AC_CHECK_PROGS(GXX2, $CXX, "")
 	if ! test ["$GXX2" = ""]; then
 		GCC_VERSION=`$GXX2 -dumpversion`
 		echo "$GXX2 is version $GCC_VERSION"
-	else
-		AC_MSG_ERROR(Could not find $CXX)
 	fi
 fi
 
@@ -29,6 +25,9 @@ if ! test "$GCC_VERSION" = "4.1.2"; then
 	if test ["$GXX412" = "g++412"]; then
 		GCC_VERSION=`$GXX412 -dumpversion`
 		echo "g++412 is version $GCC_VERSION"
+		if ! test "$GCC_VERSION" = "4.1.2"; then
+			AC_MSG_ERROR(Could not find compatible g++ compiler)
+		fi
 	else
 		AC_MSG_ERROR(Could not find compatible g++ compiler)
 	fi
