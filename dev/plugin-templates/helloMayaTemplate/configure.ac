@@ -28,7 +28,7 @@ if test ["${PLUGIN_DIR+set}" = set]; then
 		echo "PLUGIN_DIR = $PLUGIN_DIR"
 	fi
 else
-	AC_MSG_ERROR(PLUGIN_DIR is not set.)
+	AC_MSG_ERROR(PLUGIN_DIR is not set. Please see README for more information.)
 fi
 AC_SUBST(PLUGIN_DIR)
 
