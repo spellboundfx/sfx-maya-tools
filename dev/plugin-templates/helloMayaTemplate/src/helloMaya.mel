@@ -1,0 +1,5 @@
+global proc helloMaya()
+{
+	loadPlugin "helloMaya.so";
+	helloMaya;
+}
