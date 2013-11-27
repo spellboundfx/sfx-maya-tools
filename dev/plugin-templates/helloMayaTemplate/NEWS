@@ -1,4 +1,9 @@
-27 November 2013 - Version 0.2.0 released
+27 November 2013 - Version 0.2.1 released
+
+	Added --disable-ccheck flag to configure script for skipping compiler
+	version check if required.
+
+26 November 2013 - Version 0.2.0 released
 
 	This release adds basic compiler compatibility checks. It does not do any
 	"this gcc version works best with this maya version" checks yet though.
