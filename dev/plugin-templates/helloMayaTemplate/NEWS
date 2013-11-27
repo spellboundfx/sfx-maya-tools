@@ -1,9 +1,9 @@
 27 November 2013 - Version 0.2.0 released
 
 	This release adds basic compiler compatibility checks. It does not do any
-	"this gcc works best with this maya version" checks yet though. This will
-	be implemented in later releases. Currently it looks for g++ version
-	4.1.2.
+	"this gcc version works best with this maya version" checks yet though.
+	This will be implemented in later releases. Currently it looks for g++
+	version 4.1.2.
 
 
 24 November 2013 - Initial release of version 0.1.1
