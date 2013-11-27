@@ -7,11 +7,7 @@ AM_INIT_AUTOMAKE([-Wall -Werror])
 
 AC_ARG_ENABLE([ccheck], AS_HELP_STRING([--disable-ccheck], [Skip compiler version check. Only do basic testing]))
 
-AS_IF([test "x$enable_ccheck" != "xyes"], [
-	echo "Doing basic compiler checks"
-	AC_PROG_CC
-	AC_PROG_CXX
-], [
+AS_IF([test "x$enable_ccheck" != "xno"], [
 	if test ["$CC" = ""] || test ["$CC" = "gcc"]; then
 		AC_CHECK_PROGS(GCC, "gcc", "")
 		if test ["$GCC" = "gcc"]; then
@@ -42,7 +38,6 @@ AS_IF([test "x$enable_ccheck" != "xyes"], [
 			AC_MSG_ERROR(Could not find compatible gcc compiler)
 		fi
 	fi
-	AC_PROG_CC($CC)
 
 
 	if test ["$CXX" = ""] || test ["$CXX" = "g++"]; then
@@ -76,9 +71,19 @@ AS_IF([test "x$enable_ccheck" != "xyes"], [
 		fi
 	fi
 
-	echo "$CXX version seems to be compatible"
-	AC_PROG_CXX($CXX)
+	echo "$CC and $CXX versions seem to be compatible"
+], [
+	echo "Doing basic compiler checks"
+	if test ["$CC" = ""]; then
+		CC="gcc"
+	fi
+	if test ["$CXX" = ""]; then
+		CXX="G++"
+	fi
 ])
+
+AC_PROG_CC($CC)
+AC_PROG_CXX($CXX)
 
 AC_SUBST(AM_CXXFLAGS)
 AC_SUBST(AM_LDFLAGS)
