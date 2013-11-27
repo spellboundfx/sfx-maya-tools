@@ -6,7 +6,11 @@ AC_CONFIG_SRCDIR([src/helloMaya.cpp])
 AM_INIT_AUTOMAKE([-Wall -Werror])
 
 AC_ARG_VAR([MAYA_LOCATION], [Full path to Maya install folder.])
-AC_SUBST(MAYA_LOCATION)
+AC_ARG_VAR([PLUGIN_DIR], [The folder where the plugin.so file will be installed.])
+AC_ARG_VAR([MEL_DIR], [The folder where the mel scripts will be installed.])
+AC_ARG_VAR([PYTHON_DIR], [The folder where the python scripts will be installed.])
+AC_ARG_VAR([ICON_DIR], [The folder where the icon files will be installed.])
+AC_ARG_VAR([SHELF_DIR], [The folder where the shelf files will be installed.])
 
 if test ["${MAYA_LOCATION+set}" = set]; then
 	if ! test -d [$MAYA_LOCATION]; then
