@@ -58,7 +58,7 @@ Documentation
 	plugin.so file. The "make install" command makes use of this folder too.
 	Both of these variables can be overridden like this:
 
-	./configure MAYA_LOCATION=/install/dir MAYA_PLUG_IN_PATH=/plugin/dir
+	    ./configure MAYA_LOCATION=/install/dir MAYA_PLUG_IN_PATH=/plugin/dir
 
 	Please see the Maya API Guide at http://www.autodesk.com for general
 	information about setting up your build environment.
