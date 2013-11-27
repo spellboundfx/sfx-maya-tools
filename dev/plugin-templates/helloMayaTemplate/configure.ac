@@ -18,7 +18,7 @@ if test ["${MAYA_LOCATION+set}" = set]; then
 		echo "MAYA_LOCATION = $MAYA_LOCATION"
 	fi
 else
-	AC_MSG_ERROR(MAYA_LOCATION is not set.)
+	AC_MSG_ERROR(MAYA_LOCATION is not set. Please see README for more information.)
 fi
 
 if test ["${PLUGIN_DIR+set}" = set]; then
