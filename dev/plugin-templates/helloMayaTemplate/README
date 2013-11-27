@@ -38,6 +38,25 @@ Documentation
 
 	Please see http://www.spellboundfx.com for full documentation.
 
+	The minimum required command line for configure is:
+
+		./configure PLUGIN_DIR=/path/to/plugin/install/dir
+
+	If you have mel scripts, python scripts, icons and shelves in your
+	project, you should define their installatin directories using thes
+	variables:
+
+		MEL_DIR=/path/to/mel/install/dir - for mel scripts
+		PYTHON_DIR=/path/to/python/install/dir - for python scripts
+		ICON_DIR=/path/to/icon/install/dir - for icon files
+		SHELF_DIR=/path/to/shelf/install/dir - for shelves
+
+	MAYA_LOCATION is defined as an environment variable in many systems. If
+	it's not then it needs to be supplied in the configure parameters as
+	well e.g:
+
+	    MAYA_LOCATION=/usr/autodesk/maya2014-x64/
+
 	At the time of writing this the current version of Maya is 2014 which
 	requires gcc/g++ version 4.1.2 for ABI compatibility. See your system
 	documentation and/or the Maya API Guide for information on how to obtain a
@@ -50,15 +69,6 @@ Documentation
 	override the compiler commands with CXX and CC flags e.g:
 	
 	    ./configure --disable-ccheck CC=my_gcc CXX=my_g++
-
-	You should have an environment variable called MAYA_LOCATION pointing to
-	the root folder of your Maya installation e.g.
-	/usr/autodesk/maya2014-x64/. You should also have an environment variable
-	called MAYA_PLUG_IN_PATH pointing to the folder where Maya can find your
-	plugin.so file. The "make install" command makes use of this folder too.
-	Both of these variables can be overridden like this:
-
-	    ./configure MAYA_LOCATION=/install/dir MAYA_PLUG_IN_PATH=/plugin/dir
 
 	Please see the Maya API Guide at http://www.autodesk.com for general
 	information about setting up your build environment.
