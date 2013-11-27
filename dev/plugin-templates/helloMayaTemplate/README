@@ -47,15 +47,18 @@ Documentation
 	have compiled gcc412 from sources and installed it to /opt/gcc412 then
 	created g++412 and gcc412 symlinks in /usr/bin. You can disable the
 	version check with the configure flag --disable-ccheck. You can also
-	override the compiler commands with CXX=my_g++ and CC=my_gcc flags.
+	override the compiler commands with CXX and CC flags e.g:
+	
+	    ./configure --disable-ccheck CC=my_gcc CXX=my_g++
 
-	You should have an environment variable called MAYA_LOCATION pointing
-	to the root folder of your Maya installation e.g.
-	/usr/autodesk/maya2014-x64/
+	You should have an environment variable called MAYA_LOCATION pointing to
+	the root folder of your Maya installation e.g.
+	/usr/autodesk/maya2014-x64/. You should also have an environment variable
+	called MAYA_PLUG_IN_PATH pointing to the folder where Maya can find your
+	plugin.so file. The "make install" command makes use of this folder too.
+	Both of these variables can be overridden like this:
 
-	You should also have an environment variable called MAYA_PLUG_IN_PATH
-	pointing to the folder where Maya can find your plugin.so file. "make
-	install" makes use of this folder too.
+	./configure MAYA_LOCATION=/install/dir MAYA_PLUG_IN_PATH=/plugin/dir
 
 	Please see the Maya API Guide at http://www.autodesk.com for general
 	information about setting up your build environment.
