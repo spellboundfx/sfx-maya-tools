@@ -8,12 +8,14 @@ AM_INIT_AUTOMAKE([-Wall -Werror])
 if test ["$CXX" = ""] || test ["$CXX" = "g++"]; then
 	AC_CHECK_PROGS(GXX, "g++", "")
 	if test ["$GXX" = "g++"]; then
+		CXX="g++"
 		GCC_VERSION=`$GXX -dumpversion`
 		echo "g++ is version $GCC_VERSION"
 	fi
 else
 	AC_CHECK_PROGS(GXX2, $CXX, "")
 	if ! test ["$GXX2" = ""]; then
+		CXX=$GXX2
 		GCC_VERSION=`$GXX2 -dumpversion`
 		echo "$GXX2 is version $GCC_VERSION"
 	fi
@@ -23,6 +25,7 @@ if ! test "$GCC_VERSION" = "4.1.2"; then
 	echo "A compatible g++ was not found. Checking for g++412 instead."
 	AC_CHECK_PROGS(GXX412, "g++412", "")
 	if test ["$GXX412" = "g++412"]; then
+		CXX=$GXX412
 		GCC_VERSION=`$GXX412 -dumpversion`
 		echo "g++412 is version $GCC_VERSION"
 		if ! test "$GCC_VERSION" = "4.1.2"; then
@@ -33,9 +36,9 @@ if ! test "$GCC_VERSION" = "4.1.2"; then
 	fi
 fi
 
-echo "g++ version is compatible"
+echo "$CXX version seems to be compatible"
 
-AC_PROG_CXX
+AC_PROG_CXX($CXX)
 AC_PROG_CC
 
 AC_SUBST(AM_CXXFLAGS)
