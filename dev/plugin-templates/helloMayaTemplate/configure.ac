@@ -1,45 +1,84 @@
-AC_INIT([helloMaya], [0.2.0], [bug-report@email])
+AC_INIT([helloMaya], [0.2.1], [bug-report@email])
 AC_DEFINE([PLUGIN_VENDOR], ["Your Name"], [Plugin vendor name])
 
 AC_PREREQ([2.63])
 AC_CONFIG_SRCDIR([src/helloMaya.cpp])
 AM_INIT_AUTOMAKE([-Wall -Werror])
 
-if test ["$CXX" = ""] || test ["$CXX" = "g++"]; then
-	AC_CHECK_PROGS(GXX, "g++", "")
-	if test ["$GXX" = "g++"]; then
-		CXX="g++"
-		GCC_VERSION=`$GXX -dumpversion`
-		echo "g++ is version $GCC_VERSION"
-	fi
-else
-	AC_CHECK_PROGS(GXX2, $CXX, "")
-	if ! test ["$GXX2" = ""]; then
-		CXX=$GXX2
-		GCC_VERSION=`$GXX2 -dumpversion`
-		echo "$GXX2 is version $GCC_VERSION"
-	fi
-fi
+AC_ARG_ENABLE([ccheck], AS_HELP_STRING([--disable-ccheck], [Skip compiler version check. Only do basic testing]))
 
-if ! test "$GCC_VERSION" = "4.1.2"; then
-	echo "A compatible g++ was not found. Checking for g++412 instead."
-	AC_CHECK_PROGS(GXX412, "g++412", "")
-	if test ["$GXX412" = "g++412"]; then
-		CXX=$GXX412
-		GCC_VERSION=`$GXX412 -dumpversion`
-		echo "g++412 is version $GCC_VERSION"
-		if ! test "$GCC_VERSION" = "4.1.2"; then
-			AC_MSG_ERROR(Could not find compatible g++ compiler)
+AS_IF([test "x$enable_ccheck" != "xno"], [
+	if test ["$CC" = ""] || test ["$CC" = "gcc"]; then
+		AC_CHECK_PROGS(GCC, "gcc", "")
+		if test ["$GCC" = "gcc"]; then
+			CC="gcc"
+			GCC_VERSION=`$GCC -dumpversion`
+			echo "gcc is version $GCC_VERSION"
 		fi
 	else
-		AC_MSG_ERROR(Could not find compatible g++ compiler)
+		AC_CHECK_PROGS(GCC2, $CC, "")
+		if ! test ["$GCC2" = ""]; then
+			CC=$GCC2
+			GCC_VERSION=`$GCC2 -dumpversion`
+			echo "$GCC2 is version $GCC_VERSION"
+		fi
 	fi
-fi
 
-echo "$CXX version seems to be compatible"
+	if ! test "$GCC_VERSION" = "4.1.2"; then
+		echo "A compatible gcc was not found. Checking for gcc412 instead."
+		AC_CHECK_PROGS(GCC412, "gcc412", "")
+		if test ["$GCC412" = "gcc412"]; then
+			CC=$GCC412
+			GCC_VERSION=`$GCC412 -dumpversion`
+			echo "gcc412 is version $GCC_VERSION"
+			if ! test "$GCC_VERSION" = "4.1.2"; then
+				AC_MSG_ERROR(Could not find compatible gcc compiler)
+			fi
+		else
+			AC_MSG_ERROR(Could not find compatible gcc compiler)
+		fi
+	fi
+	AC_PROG_CC($CC)
 
-AC_PROG_CXX($CXX)
-AC_PROG_CC
+
+	if test ["$CXX" = ""] || test ["$CXX" = "g++"]; then
+		AC_CHECK_PROGS(GXX, "g++", "")
+		if test ["$GXX" = "g++"]; then
+			CXX="g++"
+			GXX_VERSION=`$GXX -dumpversion`
+			echo "g++ is version $GXX_VERSION"
+		fi
+	else
+		AC_CHECK_PROGS(GXX2, $CXX, "")
+		if ! test ["$GXX2" = ""]; then
+			CXX=$GXX2
+			GXX_VERSION=`$GXX2 -dumpversion`
+			echo "$GXX2 is version $GXX_VERSION"
+		fi
+	fi
+
+	if ! test "$GXX_VERSION" = "4.1.2"; then
+		echo "A compatible g++ was not found. Checking for g++412 instead."
+		AC_CHECK_PROGS(GXX412, "g++412", "")
+		if test ["$GXX412" = "g++412"]; then
+			CXX=$GXX412
+			GXX_VERSION=`$GXX412 -dumpversion`
+			echo "g++412 is version $GXX_VERSION"
+			if ! test "$GXX_VERSION" = "4.1.2"; then
+				AC_MSG_ERROR(Could not find compatible g++ compiler)
+			fi
+		else
+			AC_MSG_ERROR(Could not find compatible g++ compiler)
+		fi
+	fi
+
+	echo "$CXX version seems to be compatible"
+	AC_PROG_CXX($CXX)
+], [
+	echo "Doing basic compiler checks"
+	AC_PROG_CC
+	AC_PROG_CXX
+])
 
 AC_SUBST(AM_CXXFLAGS)
 AC_SUBST(AM_LDFLAGS)
