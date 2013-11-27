@@ -7,7 +7,11 @@ AM_INIT_AUTOMAKE([-Wall -Werror])
 
 AC_ARG_ENABLE([ccheck], AS_HELP_STRING([--disable-ccheck], [Skip compiler version check. Only do basic testing]))
 
-AS_IF([test "x$enable_ccheck" != "xno"], [
+AS_IF([test "x$enable_ccheck" != "xyes"], [
+	echo "Doing basic compiler checks"
+	AC_PROG_CC
+	AC_PROG_CXX
+], [
 	if test ["$CC" = ""] || test ["$CC" = "gcc"]; then
 		AC_CHECK_PROGS(GCC, "gcc", "")
 		if test ["$GCC" = "gcc"]; then
@@ -74,10 +78,6 @@ AS_IF([test "x$enable_ccheck" != "xno"], [
 
 	echo "$CXX version seems to be compatible"
 	AC_PROG_CXX($CXX)
-], [
-	echo "Doing basic compiler checks"
-	AC_PROG_CC
-	AC_PROG_CXX
 ])
 
 AC_SUBST(AM_CXXFLAGS)
