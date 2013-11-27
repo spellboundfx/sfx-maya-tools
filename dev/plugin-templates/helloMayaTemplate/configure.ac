@@ -78,7 +78,7 @@ AS_IF([test "x$enable_ccheck" != "xno"], [
 		CC="gcc"
 	fi
 	if test ["$CXX" = ""]; then
-		CXX="G++"
+		CXX="g++"
 	fi
 ])
 
