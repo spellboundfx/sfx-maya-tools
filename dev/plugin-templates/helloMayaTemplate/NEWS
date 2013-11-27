@@ -1,21 +1,21 @@
 27 November 2013 - Version 0.3.0 released
 
-	WARNING - This release changes the way installation directories are
-	handled. MAYA_PLUG_IN_PATH is not used anymore as it can contain
-	several paths in it. This release also adds support for scripts,
-	shelves and icons. Please see README for further information.
+    WARNING - This release changes the way installation directories are
+    handled. MAYA_PLUG_IN_PATH is not used anymore as it can contain
+    several paths in it. This release also adds support for scripts,
+    shelves and icons. Please see README for further information.
 
 27 November 2013 - Version 0.2.1 released
 
-	Added --disable-ccheck flag to configure script for skipping compiler
-	version check if required.
+    Added --disable-ccheck flag to configure script for skipping compiler
+    version check if required.
 
 26 November 2013 - Version 0.2.0 released
 
-	This release adds basic compiler compatibility checks. It does not do any
-	"this gcc version works best with this maya version" checks yet though.
-	This will be implemented in later releases. Currently it looks for g++
-	version 4.1.2.
+    This release adds basic compiler compatibility checks. It does not do any
+    "this gcc version works best with this maya version" checks yet though.
+    This will be implemented in later releases. Currently it looks for g++
+    version 4.1.2.
 
 
 24 November 2013 - Initial release of version 0.1.1

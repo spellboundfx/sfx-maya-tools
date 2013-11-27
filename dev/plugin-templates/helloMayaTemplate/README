@@ -2,7 +2,7 @@
 //
 // This file is part of helloMayaTemplate.
 // 
-// 	Copyright 2013 Kari Brown
+//  Copyright 2013 Kari Brown
 // 
 //  helloMayaTemplate is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published
@@ -23,61 +23,61 @@
 
 helloMayaTemplate - A GNU style Maya plugin template
 
-	helloMayaTemplate is a GNU style example Maya plugin project. It allows
-	the maintainer to use the GNU build system to configure and deploy a Maya
-	plugin project. It also allows the end user to use the well known
-	combination of commands "./configure", "make" and "make install" to use
-	the plugin. It is still in its very early stages and many things might not
-	work properly yet. I encourage you to give it a go and report back your
-	experiences wheter successfull or not. You are more than welcome to
-	contribute your ideas and changes to this project. See Bug reporting
-	secton for contact details.
+    helloMayaTemplate is a GNU style example Maya plugin project. It allows
+    the maintainer to use the GNU build system to configure and deploy a Maya
+    plugin project. It also allows the end user to use the well known
+    combination of commands "./configure", "make" and "make install" to use
+    the plugin. It is still in its very early stages and many things might not
+    work properly yet. I encourage you to give it a go and report back your
+    experiences wheter successfull or not. You are more than welcome to
+    contribute your ideas and changes to this project. See Bug reporting
+    secton for contact details.
 
 
 Documentation
 
-	Please see http://www.spellboundfx.com for full documentation.
+    Please see http://www.spellboundfx.com for full documentation.
 
-	The minimum required command line for configure is:
+    The minimum required command line for configure is:
 
-		./configure PLUGIN_DIR=/path/to/plugin/install/dir
+        ./configure PLUGIN_DIR=/path/to/plugin/install/dir
 
-	If you have mel scripts, python scripts, icons and shelves in your
-	project, you should define their installatin directories using thes
-	variables:
+    If you have mel scripts, python scripts, icons and shelves in your
+    project, you should define their installatin directories using thes
+    variables:
 
-		MEL_DIR=/path/to/mel/install/dir - for mel scripts
-		PYTHON_DIR=/path/to/python/install/dir - for python scripts
-		ICON_DIR=/path/to/icon/install/dir - for icon files
-		SHELF_DIR=/path/to/shelf/install/dir - for shelves
+        MEL_DIR=/path/to/mel/install/dir - for mel scripts
+        PYTHON_DIR=/path/to/python/install/dir - for python scripts
+        ICON_DIR=/path/to/icon/install/dir - for icon files
+        SHELF_DIR=/path/to/shelf/install/dir - for shelves
 
-	MAYA_LOCATION is defined as an environment variable in many systems. If
-	it's not then it needs to be supplied in the configure parameters as
-	well e.g:
+    MAYA_LOCATION is defined as an environment variable in many systems. If
+    it's not then it needs to be supplied in the configure parameters as
+    well e.g:
 
-	    MAYA_LOCATION=/usr/autodesk/maya2014-x64/
+        MAYA_LOCATION=/usr/autodesk/maya2014-x64/
 
-	At the time of writing this the current version of Maya is 2014 which
-	requires gcc/g++ version 4.1.2 for ABI compatibility. See your system
-	documentation and/or the Maya API Guide for information on how to obtain a
-	copy. The configure.ac file has been written with this in mind. If the
-	default g++ version is not 4.1.2 it looks for g++412 gcc412 commands for
-	compiling the project which should be in your search path. On my system I
-	have compiled gcc412 from sources and installed it to /opt/gcc412 then
-	created g++412 and gcc412 symlinks in /usr/bin. You can disable the
-	version check with the configure flag --disable-ccheck. You can also
-	override the compiler commands with CXX and CC flags e.g:
-	
-	    ./configure --disable-ccheck CC=my_gcc CXX=my_g++
+    At the time of writing this the current version of Maya is 2014 which
+    requires gcc/g++ version 4.1.2 for ABI compatibility. See your system
+    documentation and/or the Maya API Guide for information on how to obtain a
+    copy. The configure.ac file has been written with this in mind. If the
+    default g++ version is not 4.1.2 it looks for g++412 gcc412 commands for
+    compiling the project which should be in your search path. On my system I
+    have compiled gcc412 from sources and installed it to /opt/gcc412 then
+    created g++412 and gcc412 symlinks in /usr/bin. You can disable the
+    version check with the configure flag --disable-ccheck. You can also
+    override the compiler commands with CXX and CC flags e.g:
+    
+        ./configure --disable-ccheck CC=my_gcc CXX=my_g++
 
-	Please see the Maya API Guide at http://www.autodesk.com for general
-	information about setting up your build environment.
+    Please see the Maya API Guide at http://www.autodesk.com for general
+    information about setting up your build environment.
 
-	Please see http://en.wikipedia.org/wiki/GNU_build_system and
-	http://airs.com/ian/configure/ for more information on the GNU build
-	system.
+    Please see http://en.wikipedia.org/wiki/GNU_build_system and
+    http://airs.com/ian/configure/ for more information on the GNU build
+    system.
 
 
 Bug reporting
 
-	Please report bugs or feature requests to info@spellboundfx.com
+    Please report bugs or feature requests to info@spellboundfx.com
