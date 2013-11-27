@@ -8,38 +8,6 @@ AM_INIT_AUTOMAKE([-Wall -Werror])
 AC_ARG_ENABLE([ccheck], AS_HELP_STRING([--disable-ccheck], [Skip compiler version check. Only do basic testing]))
 
 AS_IF([test "x$enable_ccheck" != "xno"], [
-	if test ["$CC" = ""] || test ["$CC" = "gcc"]; then
-		AC_CHECK_PROGS(GCC, "gcc", "")
-		if test ["$GCC" = "gcc"]; then
-			CC="gcc"
-			GCC_VERSION=`$GCC -dumpversion`
-			echo "gcc is version $GCC_VERSION"
-		fi
-	else
-		AC_CHECK_PROGS(GCC2, $CC, "")
-		if ! test ["$GCC2" = ""]; then
-			CC=$GCC2
-			GCC_VERSION=`$GCC2 -dumpversion`
-			echo "$GCC2 is version $GCC_VERSION"
-		fi
-	fi
-
-	if ! test "$GCC_VERSION" = "4.1.2"; then
-		echo "A compatible gcc was not found. Checking for gcc412 instead."
-		AC_CHECK_PROGS(GCC412, "gcc412", "")
-		if test ["$GCC412" = "gcc412"]; then
-			CC=$GCC412
-			GCC_VERSION=`$GCC412 -dumpversion`
-			echo "gcc412 is version $GCC_VERSION"
-			if ! test "$GCC_VERSION" = "4.1.2"; then
-				AC_MSG_ERROR(Could not find compatible gcc compiler)
-			fi
-		else
-			AC_MSG_ERROR(Could not find compatible gcc compiler)
-		fi
-	fi
-
-
 	if test ["$CXX" = ""] || test ["$CXX" = "g++"]; then
 		AC_CHECK_PROGS(GXX, "g++", "")
 		if test ["$GXX" = "g++"]; then
@@ -71,6 +39,38 @@ AS_IF([test "x$enable_ccheck" != "xno"], [
 		fi
 	fi
 
+
+	if test ["$CC" = ""] || test ["$CC" = "gcc"]; then
+		AC_CHECK_PROGS(GCC, "gcc", "")
+		if test ["$GCC" = "gcc"]; then
+			CC="gcc"
+			GCC_VERSION=`$GCC -dumpversion`
+			echo "gcc is version $GCC_VERSION"
+		fi
+	else
+		AC_CHECK_PROGS(GCC2, $CC, "")
+		if ! test ["$GCC2" = ""]; then
+			CC=$GCC2
+			GCC_VERSION=`$GCC2 -dumpversion`
+			echo "$GCC2 is version $GCC_VERSION"
+		fi
+	fi
+
+	if ! test "$GCC_VERSION" = "4.1.2"; then
+		echo "A compatible gcc was not found. Checking for gcc412 instead."
+		AC_CHECK_PROGS(GCC412, "gcc412", "")
+		if test ["$GCC412" = "gcc412"]; then
+			CC=$GCC412
+			GCC_VERSION=`$GCC412 -dumpversion`
+			echo "gcc412 is version $GCC_VERSION"
+			if ! test "$GCC_VERSION" = "4.1.2"; then
+				AC_MSG_ERROR(Could not find compatible gcc compiler)
+			fi
+		else
+			AC_MSG_ERROR(Could not find compatible gcc compiler)
+		fi
+	fi
+
 	echo "$CC and $CXX versions seem to be compatible"
 ], [
 	echo "Doing basic compiler checks"
@@ -82,8 +82,8 @@ AS_IF([test "x$enable_ccheck" != "xno"], [
 	fi
 ])
 
-AC_PROG_CC($CC)
 AC_PROG_CXX($CXX)
+AC_PROG_CC($CC)
 
 AC_SUBST(AM_CXXFLAGS)
 AC_SUBST(AM_LDFLAGS)
