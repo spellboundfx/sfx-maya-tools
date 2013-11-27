@@ -1,4 +1,4 @@
-AC_INIT([helloMaya], [0.1.1], [bug-report@email])
+AC_INIT([helloMaya], [0.2.0], [bug-report@email])
 AC_DEFINE([PLUGIN_VENDOR], ["Your Name"], [Plugin vendor name])
 
 AC_PREREQ([2.63])
