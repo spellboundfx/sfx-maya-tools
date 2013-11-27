@@ -1,9 +1,12 @@
-AC_INIT([helloMaya], [0.2.2], [bug-report@email])
+AC_INIT([helloMaya], [0.3.0], [bug-report@email])
 AC_DEFINE([PLUGIN_VENDOR], ["Your Name"], [Plugin vendor name])
 
 AC_PREREQ([2.63])
 AC_CONFIG_SRCDIR([src/helloMaya.cpp])
 AM_INIT_AUTOMAKE([-Wall -Werror])
+
+AC_ARG_VAR([MAYA_LOCATION], [Full path to Maya install folder.])
+AC_SUBST(MAYA_LOCATION)
 
 if test ["${MAYA_LOCATION+set}" = set]; then
 	if ! test -d [$MAYA_LOCATION]; then
@@ -18,14 +21,59 @@ else
 	AC_MSG_ERROR(MAYA_LOCATION is not set.)
 fi
 
-if test ["${MAYA_PLUG_IN_PATH+set}" = set]; then
-	if ! test -d [$MAYA_PLUG_IN_PATH]; then
-		AC_MSG_ERROR(MAYA_PLUG_IN_PATH $MAYA_PLUG_IN_PATH is not a valid directory.)
+if test ["${PLUGIN_DIR+set}" = set]; then
+	if ! test -d [$PLUGIN_DIR]; then
+		AC_MSG_ERROR(PLUGIN_DIR $PLUGIN_DIR is not a valid directory.)
 	else
-		echo "MAYA_PLUG_IN_PATH = $MAYA_PLUG_IN_PATH"
+		echo "PLUGIN_DIR = $PLUGIN_DIR"
 	fi
 else
-	AC_MSG_ERROR(MAYA_PLUG_IN_PATH is not set.)
+	AC_MSG_ERROR(PLUGIN_DIR is not set.)
+fi
+AC_SUBST(PLUGIN_DIR)
+
+if test ["${MEL_DIR+set}" = set]; then
+	if ! test -d [$MEL_DIR]; then
+		AC_MSG_ERROR(MEL_DIR $MEL_DIR is not a valid directory.)
+	else
+		echo "MEL_DIR = $MEL_DIR"
+		AC_SUBST(MEL_DIR)
+	fi
+else
+	AC_MSG_WARN(MEL_DIR is not set.)
+fi
+
+if test ["${PYTHON_DIR+set}" = set]; then
+	if ! test -d [$PYTHON_DIR]; then
+		AC_MSG_ERROR(PYTHON_DIR $PYTHON_DIR is not a valid directory.)
+	else
+		echo "PYTHON_DIR = $PYTHON_DIR"
+		AC_SUBST(PYTHON_DIR)
+	fi
+else
+	AC_MSG_WARN(PYTHON_DIR is not set.)
+fi
+
+if test ["${ICON_DIR+set}" = set]; then
+	if ! test -d [$ICON_DIR]; then
+		AC_MSG_ERROR(ICON_DIR $ICON_DIR is not a valid directory.)
+	else
+		echo "ICON_DIR = $ICON_DIR"
+		AC_SUBST(ICON_DIR)
+	fi
+else
+	AC_MSG_WARN(ICON_DIR is not set.)
+fi
+
+if test ["${SHELF_DIR+set}" = set]; then
+	if ! test -d [$SHELF_DIR]; then
+		AC_MSG_ERROR(SHELF_DIR $SHELF_DIR is not a valid directory.)
+	else
+		echo "SHELF_DIR = $SHELF_DIR"
+		AC_SUBST(SHELF_DIR)
+	fi
+else
+	AC_MSG_WARN(SHELF_DIR is not set.)
 fi
 
 AC_ARG_ENABLE([ccheck], AS_HELP_STRING([--disable-ccheck], [Skip compiler version check. Only do basic testing]))
@@ -113,12 +161,6 @@ AC_SUBST(AM_LDFLAGS)
 
 AC_OPENMP
 AC_SUBST(OPENMP_CFLAGS)
-
-AC_ARG_VAR([MAYA_LOCATION], [Full path to Maya install folder.])
-AC_ARG_VAR([MAYA_PLUG_IN_PATH], [Full path to Maya plugin folder.])
-AC_SUBST(MAYA_LOCATION)
-AC_SUBST(MAYA_PLUG_IN_PATH)
-
 
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_FILES([Makefile src/Makefile])
