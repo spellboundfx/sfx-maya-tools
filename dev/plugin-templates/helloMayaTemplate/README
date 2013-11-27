@@ -43,7 +43,7 @@ Documentation
         ./configure PLUGIN_DIR=/path/to/plugin/install/dir
 
     If you have mel scripts, python scripts, icons and shelves in your
-    project, you should define their installatin directories using thes
+    project, you should define their installatin directories using these
     variables:
 
         MEL_DIR=/path/to/mel/install/dir - for mel scripts
