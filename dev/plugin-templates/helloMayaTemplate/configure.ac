@@ -5,6 +5,25 @@ AC_PREREQ([2.63])
 AC_CONFIG_SRCDIR([src/helloMaya.cpp])
 AM_INIT_AUTOMAKE([-Wall -Werror])
 
+AC_CANONICAL_HOST
+case $host_os in
+  linux*)
+        # Do something specific for linux
+        ;;
+#   *win*)
+#        # Do something specific for Windows
+#        ;;
+#  darwin* )
+#        # Do something specific for mac
+#        ;;
+    *)
+        #Default Case
+        AC_MSG_ERROR([Your platform is not currently supported])
+        ;;
+esac
+
+
+
 AC_ARG_VAR([MAYA_LOCATION], [Full path to Maya install folder.])
 AC_ARG_VAR([PLUGIN_DIR], [The folder where the plugin.so file will be installed.])
 AC_ARG_VAR([MEL_DIR], [The folder where the mel scripts will be installed.])
