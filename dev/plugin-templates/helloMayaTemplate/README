@@ -46,10 +46,10 @@ Documentation
     project, you should define their installatin directories using these
     variables:
 
-        MEL_DIR=/path/to/mel/install/dir - for mel scripts
-        PYTHON_DIR=/path/to/python/install/dir - for python scripts
-        ICON_DIR=/path/to/icon/install/dir - for icon files
-        SHELF_DIR=/path/to/shelf/install/dir - for shelves
+        MEL_DIR=/path/to/mel/install/dir
+        PYTHON_DIR=/path/to/python/install/dir
+        ICON_DIR=/path/to/icon/install/dir
+        SHELF_DIR=/path/to/shelf/install/dir
 
     MAYA_LOCATION is defined as an environment variable in many systems. If
     it's not then it needs to be supplied in the configure parameters as
@@ -69,6 +69,10 @@ Documentation
     override the compiler commands with CXX and CC flags e.g:
     
         ./configure --disable-ccheck CC=my_gcc CXX=my_g++
+
+    The following command will list all the available configure options:
+
+        ./configure --help
 
     Please see the Maya API Guide at http://www.autodesk.com for general
     information about setting up your build environment.
